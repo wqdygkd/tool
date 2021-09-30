@@ -4,4 +4,4 @@ const list = [
   { key: 3, name: '(3) 取消代理', value: 3 }
 ]
 
-module.exports = list
+export default list

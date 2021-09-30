@@ -1,19 +1,27 @@
-const inquirer = require('inquirer')
-const chalk = require('chalk')
+import inquirer from 'inquirer'
+import chalk from 'chalk'
 const log = console.log
 
-const questions = [
-  {
-    type: 'input',
-    name: 'number',
-    message: '请输入代理：'
-  }
-]
+// const shell = require('shelljs')
 
-inquirer.prompt(questions).then(answers => {
-  console.log('\nOrder receipt:')
-  console.log(JSON.stringify(answers, null, '  '))
-})
+export default function () {
+  const questions = [
+    {
+      type: 'input',
+      name: 'proxy',
+      message: '请输入代理：',
+      default: 'http://127.0.0.1:10809'
+    }
+  ]
+
+  inquirer.prompt(questions).then(answers => {
+    // const cmd = '$env:HTTP_PROXY=' + answers.proxy
+
+    // console.log(shell.exec(cmd).code)
+    // console.log('\nOrder receipt:')
+    // console.log(JSON.stringify(answers, null, '  '))
+  })
+}
 
 // const program = require('commander')
 
