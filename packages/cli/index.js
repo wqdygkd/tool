@@ -1,49 +1,41 @@
 #!/usr/bin/env node
 
-import inquirer from 'inquirer'
-import chalk from 'chalk'
+import { Command } from 'commander/esm.mjs'
+import init from './script/index.js'
+const program = new Command()
+program.version('0.0.1')
 
-// 命令列表
-import list from './command/index.js'
-import proxy from './script/proxy.js'
-
-const log = console.log
-
-let str = list.reduce((pre, current) => { return pre + current.name + '\n' }, '')
-str = '================= 命令列表 ====================\n' +
-      str +
-      '(0) 取消\n' +
-      '==============================================='
-log(chalk.blue(str))
-
-const questions = [
-  {
-    type: 'input',
-    name: 'number',
-    message: '请输入命令编号：',
-    validate (value) {
-      const valid = !isNaN(parseFloat(value))
-      return valid || 'Please enter a number'
-    },
-    filter: Number
-  }
-]
-
-inquirer.prompt(questions).then(answers => {
-  const { number } = answers
-  if (number === 1) {
-    proxy()
-    // program
-    //   .command('node', 'script/proxy.js')
-    //   .option('-c, --cheese [type]', 'Add cheese with optional type')
-
-    // program.parse(process.argv).action((env, options) => {
-    //   env = env || 'all'
-    //   console.log('read config from %s', program.opts().config)
-    //   console.log('setup for %s env(s) with %s mode', env, options.setup_mode)
-    // })
-  }
+program.action(() => {
+  console.log('tool')
+  init()
 })
+
+// nginx
+const nginx = program.command('nginx')
+nginx
+  .action((source, destination) => {
+    console.log('nginx')
+  })
+nginx
+  .command('start')
+  .description('start nginx')
+  .action((source, destination) => {
+    console.log('nginx start')
+  })
+nginx
+  .command('reload')
+  .description('reload nginx')
+  .action((source, destination) => {
+    console.log('nginx reload')
+  })
+
+program.parse(process.argv)
+
+// const options = program.opts()
+// if (options.debug) console.log(options)
+// console.log('pizza details:')
+// if (options.small) console.log('- small pizza size')
+// if (options.pizzaType) console.log(`- ${options.pizzaType}`)
 
 // var process = require('child_process');
 
