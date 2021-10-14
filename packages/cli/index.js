@@ -1,35 +1,25 @@
 #!/usr/bin/env node
 
+// Native
+import fs from 'fs'
+
+// Packages
 import { Command } from 'commander/esm.mjs'
+
 import init from './script/index.js'
+import nginxInit from './script/nginx/index.js'
+const _packageJson = fs.readFileSync('./package.json')
+
 const program = new Command()
-program.version('0.0.1')
+program.version(JSON.parse(_packageJson).version)
 
-program.action(() => {
-  console.log('tool')
-  init()
-})
-
-// nginx
-const nginx = program.command('nginx')
-nginx
-  .action((source, destination) => {
-    console.log('nginx')
-  })
-nginx
-  .command('start')
-  .description('start nginx')
-  .action((source, destination) => {
-    console.log('nginx start')
-  })
-nginx
-  .command('reload')
-  .description('reload nginx')
-  .action((source, destination) => {
-    console.log('nginx reload')
-  })
+program.action(() => { init() })
+nginxInit(program)
 
 program.parse(process.argv)
+export {
+  program
+}
 
 // const options = program.opts()
 // if (options.debug) console.log(options)
