@@ -6,17 +6,28 @@ import fs from 'fs'
 // Packages
 import { Command } from 'commander/esm.mjs'
 
-import init from './script/index.js'
+import listInit from './script/index.js'
 import nginxInit from './script/nginx/index.js'
 const _packageJson = fs.readFileSync('./package.json')
 
 const program = new Command()
 program.version(JSON.parse(_packageJson).version)
 
-program.action(() => { init() })
+program
+  .command('list')
+  .description('list command')
+  .action(() => {
+    console.log('list command')
+    listInit()
+  })
+
 nginxInit(program)
 
 program.parse(process.argv)
+
+if (!program.args.length) {
+  program.help()
+}
 export {
   program
 }
