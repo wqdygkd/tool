@@ -20,3 +20,6 @@
 - configstore：轻松加载和保存配置
 - ShellJS: Node.js 的 Unix shell 命令
 - terminal-table
+- extract-zip 解压zip
+- [node-fetch](github.com/node-fetch/node-fetch)  Node.js [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+- [progress](https://github.com/visionmedia/node-progress) 进度条

@@ -8,14 +8,18 @@
     "tool": "index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "node postinstall.js",
+    "p": "npm publish --access public"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "c",
+  "license": "MIT",
   "dependencies": {
     "chalk": "^4.1.2",
     "commander": "^8.2.0",
+    "extract-zip": "^2.0.1",
     "inquirer": "^8.1.5",
+    "node-fetch": "^3.0.0",
+    "progress": "^2.0.3",
     "shelljs": "^0.8.4"
   },
   "devDependencies": {
@@ -25,5 +29,16 @@
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cuilongjin/tool-cli.git"
+  },
+  "keywords": [
+    "tool-cli"
+  ],
+  "bugs": {
+    "url": "https://github.com/cuilongjin/tool-cli/issues"
+  },
+  "homepage": "https://github.com/cuilongjin/tool-cli#readme"
 }
