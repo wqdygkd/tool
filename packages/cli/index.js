@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 
 // Native
-import fs from 'fs'
+import fs from 'node:fs'
 
 // Packages
 import { Command } from 'commander/esm.mjs'
 
 import listInit from './script/index.js'
 import nginxInit from './script/nginx/index.js'
+import proxy from './script/proxy/index.js'
 const _packageJson = fs.readFileSync('./package.json')
 
 const program = new Command()
@@ -23,9 +24,16 @@ program
 
 nginxInit(program)
 
+program
+  .command('proxy')
+  .description('proxy manage')
+  .action(() => {
+    proxy()
+  })
+
 program.parse(process.argv)
 
-if (!program.args.length) {
+if (program.args.length === 0) {
   program.help()
 }
 export {

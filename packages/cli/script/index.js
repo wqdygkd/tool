@@ -7,9 +7,9 @@ import proxy from './proxy/index.js'
 
 const log = console.log
 
-let str = list.reduce((pre, current) => { return pre + current.name + '\n' }, '')
-str = '================= 命令列表 ====================\n' +
-  str +
+let string_ = list.reduce((pre, current) => { return pre + current.name + '\n' }, '')
+string_ = '================= 命令列表 ====================\n' +
+string_ +
   '(0) 取消\n' +
   '==============================================='
 
@@ -19,7 +19,7 @@ const questions = [
     name: 'number',
     message: '请输入命令编号：',
     validate (value) {
-      const valid = !isNaN(parseFloat(value))
+      const valid = !Number.isNaN(Number.parseFloat(value))
       return valid || 'Please enter a number'
     },
     filter: Number
@@ -27,7 +27,7 @@ const questions = [
 ]
 
 export default () => {
-  log(chalk.blue(str))
+  log(chalk.blue(string_))
   inquirer.prompt(questions).then(answers => {
     const { number } = answers
     if (number === 1) {

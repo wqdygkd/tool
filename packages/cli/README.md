@@ -8,6 +8,9 @@
 - [ ] nginx 管理
 - [ ] 集成 fkill-cli
 - [ ] 支持交互式设置 ，直接命令设置
+- [ ] 快速删除文件 尤其是node_mosules文件夹
+- [ ] https://github.com/sindresorhus/del
+- [ ] adb 工具
 
 ## 感谢
 

@@ -21,7 +21,7 @@ const questions = [
     message: "What's your phone number?",
     validate (value) {
       const pass = value.match(
-        /^([01]{1})?[-.\s]?\(?(\d{3})\)?[-.\s]?(\d{3})[-.\s]?(\d{4})\s?((?:#|ext\.?\s?|x\.?\s?){1}(?:\d+)?)?$/i
+        /^([01])?[\s.-]?\(?(\d{3})\)?[\s.-]?(\d{3})[\s.-]?(\d{4})\s?((?:#|ext\.?\s?|x\.?\s?)(?:\d+)?)?$/i
       )
       if (pass) {
         return true
@@ -35,8 +35,8 @@ const questions = [
     name: 'size',
     message: 'What size do you need?',
     choices: ['Large', 'Medium', 'Small'],
-    filter (val) {
-      return val.toLowerCase()
+    filter (value) {
+      return value.toLowerCase()
     }
   },
   {
@@ -44,7 +44,7 @@ const questions = [
     name: 'quantity',
     message: 'How many do you need?',
     validate (value) {
-      const valid = !isNaN(parseFloat(value))
+      const valid = !Number.isNaN(Number.parseFloat(value))
       return valid || 'Please enter a number'
     },
     filter: Number
@@ -96,5 +96,5 @@ const questions = [
 
 inquirer.prompt(questions).then(answers => {
   console.log('\nOrder receipt:')
-  console.log(JSON.stringify(answers, null, '  '))
+  console.log(JSON.stringify(answers, undefined, '  '))
 })

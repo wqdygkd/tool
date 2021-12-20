@@ -1,11 +1,11 @@
 import fetch from 'node-fetch'
-import { createWriteStream, unlinkSync, renameSync, mkdirSync } from 'fs'
-import path from 'path'
+import { createWriteStream, unlinkSync, renameSync, mkdirSync } from 'node:fs'
+import path from 'node:path'
 import ProgressBar from 'progress'
 
 // __filename 和 __dirname 通过 import 对象的 meta 属性获取
 // / 通过 url 模块的 fileURLToPath 方法转换为路径
-import { fileURLToPath } from 'url'
+import { fileURLToPath } from 'node:url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
@@ -14,24 +14,24 @@ const __dirname = path.dirname(__filename)
   dir 下载目录
  */
 async function download ({ fileURL, dir }) {
-  try { mkdirSync(dir) } catch (_) {}
+  try { mkdirSync(dir) } catch {}
 
   // 下载保存的文件路径
   const fileSavePath = path.join(dir, path.basename(fileURL))
 
   // 缓存文件路径
-  const tmpFileSavePath = fileSavePath + '.tmp'
+  const temporaryFileSavePath = fileSavePath + '.tmp'
 
   // 创建写入流
-  const fileStream = createWriteStream(tmpFileSavePath).on('error', function (e) {
-    console.error('error==>', e)
+  const fileStream = createWriteStream(temporaryFileSavePath).on('error', function (error) {
+    console.error('error==>', error)
   })
 
   process.on('SIGINT', () => {
-    console.log(' \n下载停止:', tmpFileSavePath)
+    console.log(' \n下载停止:', temporaryFileSavePath)
     try {
-      unlinkSync(tmpFileSavePath)
-    } catch (err) {
+      unlinkSync(temporaryFileSavePath)
+    } catch {
       // 处理错误
     }
     process.exit(0)
@@ -47,15 +47,14 @@ async function download ({ fileURL, dir }) {
   try {
     if (response.status !== 200) {
       console.log('下载失败', response.status)
-      process.exit(0)
     }
 
-    const len = response.headers.get('content-length')
+    const length = response.headers.get('content-length')
     const bar = new ProgressBar('  downloading [:bar] :rate/bps :percent :etas', {
       complete: '=',
       incomplete: ' ',
       width: 20,
-      total: parseInt(len)
+      total: Number.parseInt(length)
     })
 
     console.log('开始下载:', fileURL)
@@ -65,11 +64,11 @@ async function download ({ fileURL, dir }) {
     }
 
     // 下载完成后重命名文件
-    renameSync(tmpFileSavePath, fileSavePath)
+    renameSync(temporaryFileSavePath, fileSavePath)
     console.log('下载完成:', fileSavePath)
     return fileSavePath
-  } catch (err) {
-    console.error(err.stack)
+  } catch (error) {
+    console.error(error.stack)
   }
 }
 

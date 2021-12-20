@@ -9,7 +9,7 @@ export default function () {
     {
       type: 'input',
       name: 'proxy',
-      message: '请输入代理：',
+      message: '请输入代理:',
       default: 'http://127.0.0.1:10809'
     }
   ]

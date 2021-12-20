@@ -2,3 +2,9 @@ node_modules/
 *.log
 .*
 path.txt
+
+.vscode/
+.eslintrc.js
+.gitignore
+yarn.lock
+yarn-error.log

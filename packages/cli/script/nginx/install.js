@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-import path from 'path'
-import os from 'os'
-import fs from 'fs'
+import path from 'node:path'
+import os from 'node:os'
+import fs from 'node:fs'
 import extract from 'extract-zip'
-import { fileURLToPath } from 'url'
+import { fileURLToPath } from 'node:url'
 import download from '../../utils/download.js'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -24,8 +24,8 @@ if (platform !== 'win32') {
 download({
   fileURL: 'https://nginx.org/download/nginx-1.21.3.zip',
   dir: path.join(__dirname, 'dist')
-}).then(extractFile).catch(err => {
-  console.error(err.stack)
+}).then(extractFile).catch(error => {
+  console.error(error.stack)
   process.exit(1)
 })
 
@@ -51,11 +51,11 @@ function isInstalled () {
 async function extractFile (zipPath) {
   try {
     await extract(zipPath, { dir: path.join(__dirname, 'dist') })
-    fs.writeFile(path.join(__dirname, 'path.txt'), path.join('dist', path.basename(zipPath, '.zip'), 'nginx.exe'), err => {
-      if (err) return Promise.reject(new Error(err))
+    fs.writeFile(path.join(__dirname, 'path.txt'), path.join('dist', path.basename(zipPath, '.zip'), 'nginx.exe'), error => {
+      if (error) return Promise.reject(new Error(error))
       return true
     })
-  } catch (err) {
-    return Promise.reject(new Error(err))
+  } catch (error) {
+    return Promise.reject(new Error(error))
   }
 }
