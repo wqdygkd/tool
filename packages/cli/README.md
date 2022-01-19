@@ -11,6 +11,9 @@
 - [ ] 快速删除文件 尤其是node_mosules文件夹
 - [ ] https://github.com/sindresorhus/del
 - [ ] adb 工具
+- [ ] adb,curl,wget
+- [ ] 集成常用脚本
+- [ ] 上传图片到图床
 
 ## 感谢
 
