@@ -14,6 +14,7 @@
 - [ ] adb,curl,wget
 - [ ] 集成常用脚本
 - [ ] 上传图片到图床
+- [ ] https://github.com/sindresorhus/public-ip 集成
 
 ## 感谢
 
