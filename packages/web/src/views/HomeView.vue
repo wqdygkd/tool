@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {ref, reactive, computed, toRefs  } from 'vue'
+import type { Ref } from 'vue'
 
 interface User {
   name: string
@@ -38,12 +39,22 @@ const user3 = computed<User>({
   }
 })
 
+const state = reactive({ count: 0 })
+
+function change(val: Ref) {
+  console.log(val.value)
+}
+
+// change(name)
+
+const error = ref(null)
+console.log(error.value)
+
 </script>
 
 <template>
   <main>
     {{user.name}}
+    {{state.count}}
   </main>
-
-  <button @click="change">按钮</button>
 </template>
