@@ -1,0 +1,43 @@
+{
+  "name": "tool-cli",
+  "version": "0.0.0",
+  "description": "tool-cli",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "tool": "index.js"
+  },
+  "scripts": {
+    "postinstall": "node postinstall.js",
+    "p": "npm publish --access public"
+  },
+  "author": "c",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.0.0",
+    "commander": "^8.2.0",
+    "extract-zip": "^2.0.1",
+    "form-data": "^4.0.0",
+    "glob": "^7.2.0",
+    "got": "^12.0.1",
+    "inquirer": "^8.1.5",
+    "node-fetch": "^3.0.0",
+    "progress": "^2.0.3",
+    "shelljs": "^0.8.4",
+    "split2": "^4.1.0"
+  },
+  "devDependencies": {
+    "eslint-config-wqdy": "^0.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wqdygkd/tool-cli.git"
+  },
+  "keywords": [
+    "tool-cli"
+  ],
+  "bugs": {
+    "url": "https://github.com/wqdygkd/tool-cli/issues"
+  },
+  "homepage": "https://github.com/wqdygkd/tool-cli#readme"
+}
