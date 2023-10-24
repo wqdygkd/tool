@@ -1,0 +1,23 @@
+{
+  "name": "tool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "web": "yarn workspace tool-web run dev"
+  },
+  "author": "",
+  "license": "ISC",
+  "volta": {
+    "node": "20.8.1",
+    "yarn": "3.6.4"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.2",
+    "@types/node": "20"
+  }
+}
