@@ -30,3 +30,9 @@
 - extract-zip 解压zip
 - [node-fetch](github.com/node-fetch/node-fetch)  Node.js [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 - [progress](https://github.com/visionmedia/node-progress) 进度条
+
+
+https://nodejs.cn/api/child_process.html
+
+pyinstaller index.py
+pyinstaller -w -F index.py --console 打包成单文件 添加--console

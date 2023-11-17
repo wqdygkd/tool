@@ -44,3 +44,16 @@ npm run build
 ```sh
 npm run lint
 ```
+
+base64 = btoa(str); // IE 10- 需要引入 base64.js 且不支持汉字
+或
+var s = CryptoJS.enc.Utf8.parse(str);
+base64 = CryptoJS.enc.Base64.stringify(s); // 需要引入 CryptoJS
+
+str = atob(base64); // IE 10- 需要引入 base64.js 且不支持汉字
+或
+var s = CryptoJS.enc.Base64.parse(base64);
+str = s.toString(CryptoJS.enc.Utf8); // 需要引入 CryptoJS
+
+
+淘宝链接提取
