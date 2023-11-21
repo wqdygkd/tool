@@ -1,7 +1,7 @@
 {
   "recommendations": [
     "vue.vscode-typescript-vue-plugin",
-    "vue.volar",
-    "hollowtree.vue-snippets"
+    "hollowtree.vue-snippets",
+    "vue.volar"
   ]
 }
