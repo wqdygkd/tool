@@ -2,17 +2,15 @@
   "name": "tool-cli",
   "version": "0.0.0",
   "description": "tool-cli",
-  "main": "index.js",
+  "main": "tool.js",
   "type": "module",
   "bin": {
-    "tool": "index.js"
+    "tool": "tool.js"
   },
   "scripts": {
     "postinstall": "node postinstall.js",
     "p": "npm publish --access public"
   },
-  "author": "c",
-  "license": "MIT",
   "dependencies": {
     "chalk": "^5.3.0",
     "commander": "^11.1.0",
@@ -21,20 +19,13 @@
     "form-data": "^4.0.0",
     "glob": "^10.3.10",
     "got": "^13.0.0",
-    "inquirer": "^9.2.11",
+    "inquirer": "^9.2.12",
     "node-fetch": "^3.3.2",
     "progress": "^2.0.3",
+    "rimraf": "^5.0.5",
     "shelljs": "^0.8.5",
     "split2": "^4.2.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wqdygkd/tool.git"
-  },
-  "keywords": [
-    "tool cli"
-  ],
-  "homepage": "https://github.com/wqdygkd/tool#readme",
   "volta": {
     "extends": "../../package.json"
   }

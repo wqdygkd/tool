@@ -1,13 +1,13 @@
 // import fs from 'node:fs'
 import path from 'node:path'
 
-import { deleteAsync } from 'del'
+import { rimraf } from 'rimraf'
 import ora from 'ora'
 import chalk from 'chalk'
 
 export default function (program) {
   program
-    .command('del')
+    .command('rm')
     .argument('[path]', '需要删除的目录')
     .description('快速删除目录或文件')
     .action(async source => {
@@ -24,7 +24,7 @@ export default function (program) {
             spinner.text = 'deleting ' + time.toFixed(1) + 's'
           }, 100)
 
-          await deleteAsync([path.resolve('./', source)])
+          await rimraf([path.resolve('./', source)])
         } finally {
           clearInterval(timer)
           const end = process.hrtime(start)

@@ -4,21 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "web": "yarn workspace tool-web run dev"
   },
-  "author": "",
+  "author": "c",
+  "homepage": "https://github.com/wqdygkd/tool#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wqdygkd/tool.git"
+  },
   "license": "ISC",
   "volta": {
-    "node": "20.8.1",
-    "yarn": "3.6.4"
+    "node": "20.9.0",
+    "yarn": "4.0.2"
   },
   "workspaces": [
     "packages/*"
   ],
   "devDependencies": {
     "@tsconfig/node20": "^20.1.2",
-    "@types/node": "20",
+    "@types/node": "20.9.1",
     "@wqdy/eslint-config": "^0.0.1",
     "@wqdy/eslint-config-vue2": "^0.0.1"
   }
