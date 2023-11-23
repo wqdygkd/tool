@@ -12,6 +12,7 @@ import listInit from './script/index.js'
 import nginxInit from './script/nginx/index.js'
 import proxy from './script/proxy/index.js'
 import upimg from './script/upimg/index.js'
+import del from './script/del/index.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -30,6 +31,7 @@ program
 
 nginxInit(program)
 upimg(program)
+del(program)
 
 program
   .command('proxy')
@@ -61,3 +63,12 @@ export {
 //     console.log("stdout:"+stdout);
 //     console.log("stderr:"+stderr);
 // });
+
+
+// var a = 1;
+// var b = 2;
+// if (a => b) {
+//  console.log('bigger');
+// } else {
+//  console.log('smaller');
+// }

@@ -36,3 +36,13 @@ https://nodejs.cn/api/child_process.html
 
 pyinstaller index.py
 pyinstaller -w -F index.py --console 打包成单文件 添加--console
+
+
+rimraf
+del
+
+
+make-dir
+slash
+debug
+convert-source-map

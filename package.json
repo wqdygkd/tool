@@ -18,6 +18,8 @@
   ],
   "devDependencies": {
     "@tsconfig/node20": "^20.1.2",
-    "@types/node": "20"
+    "@types/node": "20",
+    "@wqdy/eslint-config": "^0.0.1",
+    "@wqdy/eslint-config-vue2": "^0.0.1"
   }
 }
