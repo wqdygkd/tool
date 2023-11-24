@@ -11,3 +11,4 @@ node_modules
 build
 *.spec
 package-lock.json
+dist
