@@ -8,6 +8,7 @@
     "tool": "tool.js"
   },
   "scripts": {
+    "clean": "pnpx rimraf node_modules",
     "postinstall": "node postinstall.js",
     "p": "npm publish --access public"
   },
@@ -18,7 +19,7 @@
     "extract-zip": "^2.0.1",
     "form-data": "^4.0.0",
     "glob": "^10.3.10",
-    "got": "^13.0.0",
+    "got": "^14.0.0",
     "inquirer": "^9.2.12",
     "node-fetch": "^3.3.2",
     "ora": "^7.0.1",

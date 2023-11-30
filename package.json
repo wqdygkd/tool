@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "web": "yarn workspace tool-web run dev"
+    "web": "yarn workspace tool-web run dev",
+    "clean": "pnpx rimraf node_modules",
+    "clean:all": "pnpx rimraf node_modules && pnpm run -r --parallel clean",
+    "up": "pnpm update -i -r --latest"
   },
   "author": "c",
   "homepage": "https://github.com/wqdygkd/tool#readme",
@@ -14,13 +17,12 @@
   },
   "license": "ISC",
   "volta": {
-    "node": "20.9.0",
-    "yarn": "4.0.2"
+    "node": "20.10.0"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.2",
-    "@types/node": "20.9.1",
-    "@wqdy/eslint-config": "^0.0.1",
-    "@wqdy/eslint-config-vue2": "^0.0.1"
+    "@types/node": "20.10.1",
+    "@wqdy/eslint-config": "^0.0.2",
+    "@wqdy/eslint-config-vue2": "^0.0.2"
   }
 }
