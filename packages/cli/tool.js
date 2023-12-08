@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 
-// Native
-import fs from 'node:fs'
-import path from 'node:path'
+// import fs from 'node:fs'
+// import path from 'node:path'
+// import { fileURLToPath } from 'node:url'
+// const __filename = fileURLToPath(import.meta.url)
+// const __dirname = path.dirname(__filename)
+// const _packageJson = fs.readFileSync(path.resolve(__dirname, './package.json'))
+// console.log(JSON.parse(_packageJson))
 
-// Packages
 import { Command } from 'commander/esm.mjs'
-import { fileURLToPath } from 'node:url'
 
 import listInit from './script/index.js'
 import nginxInit from './script/nginx/index.js'
@@ -15,18 +17,17 @@ import proxy from './script/proxy/index.js'
 import del from './script/del/index.js'
 import rimraf from './script/rimraf/index.js'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const _packageJson = fs.readFileSync(path.resolve(__dirname, './package.json'))
+const pkg = import('./package.json')
 
 const program = new Command()
+program
+  .name('tool')
+  .version(pkg.version)
 
 program
-  .version(JSON.parse(_packageJson).version)
   .command('list')
   .description('list command')
   .action(() => {
-    console.log('list command')
     listInit()
   })
 

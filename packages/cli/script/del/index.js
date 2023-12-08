@@ -7,8 +7,8 @@ import chalk from 'chalk'
 
 export default function (program) {
   program
-    .command('del')
-    .argument('[path]', '需要删除的目录')
+    .command('del <path>')
+    // .argument('<path>', '需要删除的目录')
     .description('快速删除目录或文件')
     .action(async source => {
       if (source) {
