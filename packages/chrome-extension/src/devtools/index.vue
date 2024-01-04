@@ -1,67 +1,106 @@
 <template>
-  <div class="bar">
-    <div class="enable-status">
-      <input type="checkbox" name="enable-status" @change="statusChange">
-      <label for="enable-status">启用</label>
+  <el-config-provider size="small">
+    <el-container style="height: 100%;">
+      <el-header class="bar">
+        <el-checkbox v-model="status" label="启用" />
+      </el-header>
+      <el-container>
+        <el-tabs :tab-position="tabPosition">
+          <el-tab-pane label="User">
+            读医保卡
+            <el-button type="primary" @click="importFile">
+              <el-icon>
+                <Upload />
+              </el-icon>
+            </el-button>
+
+            <el-select style="width: 200px;" size="small" @change="change" filterable value-key="id">
+              <el-option v-for="item in contentArray" :key="item.raw" :label="item.date + item.name" :value="item.json" />
+            </el-select>
+
+
+            <el-select style="width: 200px;" size="small" @change="change" filterable value-key="id">
+              <el-option v-for="item in contentArray" :key="item.raw" :label="item.date + item.name" :value="item.json" />
+            </el-select>
+            <el-descriptions v-if="false" class="margin-top" title="With border" :column="1" border>
+              <el-descriptions-item>
+                <template #label>
+                  Username
+                </template>
+                kooriookami
+              </el-descriptions-item>
+              <el-descriptions-item>
+                <template #label>
+                  <div class="cell-item">
+
+                    Telephone
+                  </div>
+                </template>
+                18100000000
+              </el-descriptions-item>
+              <el-descriptions-item>
+                <template #label>
+                  <div class="cell-item">
+
+                    Place
+                  </div>
+                </template>
+                Suzhou
+              </el-descriptions-item>
+
+            </el-descriptions>
+          </el-tab-pane>
+          <el-tab-pane label="Config">Config</el-tab-pane>
+          <el-tab-pane label="Role">Role</el-tab-pane>
+          <el-tab-pane label="Task">Task</el-tab-pane>
+        </el-tabs>
+      </el-container>
+    </el-container>
+    <div>
+
     </div>
-  </div>
-  <div>
+    <main v-if="false">
 
-  </div>
-  <main>
-    读医保卡
-    <button @click="importFile">选择文件1</button>
-    <el-select  style="width: 200px;"  size="small" @change="change" filterable value-key="id">
-      <el-option
-        v-for="item in contentArray"
-        :key="item.raw"
-        :label="item.date + item.name"
-        :value="item.json"
-      />
-    </el-select>
-    内置数据
-    <el-select  style="width: 200px;"  size="small" @change="change" filterable value-key="id">
-      <el-option
-        v-for="item in contentArray"
-        :key="item.raw"
-        :label="item.date + item.name"
-        :value="item.json"
-      />
-    </el-select>
-    <div  style="width: 800px; height: 400px;" ref="jsoneditorRef"></div>
+      内置数据
+      <el-select style="width: 200px;" size="small" @change="change" filterable value-key="id">
+        <el-option v-for="item in contentArray" :key="item.raw" :label="item.date + item.name" :value="item.json" />
+      </el-select>
+      <div style="width: 800px; height: 400px;" ref="jsoneditorRef"></div>
 
-    读身份证
-    <button @click="importFile">选择文件1</button>
-    <el-select  style="width: 200px;"  size="small" @change="change" filterable value-key="id">
-      <el-option
-        v-for="item in contentArray"
-        :key="item.raw"
-        :label="item.date + item.name"
-        :value="item.json"
-      />
-    </el-select>
-    <div  style="width: 800px; height: 400px;" ref="jsoneditorRef"></div>
-    读永居证
-    <button @click="importFile">选择文件1</button>
-    <el-select  style="width: 200px;"  size="small" @change="change" filterable value-key="id">
-      <el-option
-        v-for="item in contentArray"
-        :key="item.raw"
-        :label="item.date + item.name"
-        :value="item.json"
-      />
-    </el-select>
-    <div  style="width: 800px; height: 400px;" ref="jsoneditorRef"></div>
-  </main>
+      读身份证
+      <el-select style="width: 200px;" size="small" @change="change" filterable value-key="id">
+        <el-option v-for="item in contentArray" :key="item.raw" :label="item.date + item.name" :value="item.json" />
+      </el-select>
+      <div style="width: 800px; height: 400px;" ref="jsoneditorRef"></div>
+      读永居证
+      <el-select style="width: 200px;" size="small" @change="change" filterable value-key="id">
+        <el-option v-for="item in contentArray" :key="item.raw" :label="item.date + item.name" :value="item.json" />
+      </el-select>
+      <div style="width: 800px; height: 400px;" ref="jsoneditorRef"></div>
+    </main>
+  </el-config-provider>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, reactive, toRaw } from 'vue'
+import { ref, onMounted, reactive, toRaw , watch} from 'vue'
 import JSONEditor from 'jsoneditor'
 import type { JSONEditorOptions } from 'jsoneditor'
 import 'jsoneditor/dist/jsoneditor.css'
 
+import {  Upload } from '@element-plus/icons-vue'
+
+const status = ref(false)
+watch(status, (newStatus) => {
+  console.log(newStatus)
+  // chrome.storage.sync.set({ count: newCount })
+
+  // chrome.runtime.sendMessage({ type: 'COUNT', count: count.value })
+})
+
+const tabPosition = ref('left')
+
 const jsoneditorRef = ref<any>(null)
+
 let jsoneditor: JSONEditor
 let contentArray: any[] = reactive([])
 
@@ -137,21 +176,18 @@ function extractJSON (content: string) {
 }
 
 onMounted(() => {
-    const options: JSONEditorOptions  = {
-      mode: 'code',
-      // modes: ['text', 'code', 'tree'],
-      "search": true,
-      mainMenuBar: false,
-      statusBar: false
-    }
-    jsoneditor = new JSONEditor(jsoneditorRef.value, options)
-    const initialJson = undefined
-    jsoneditor.set(initialJson)
+    // const options: JSONEditorOptions  = {
+    //   mode: 'code',
+    //   // modes: ['text', 'code', 'tree'],
+    //   "search": true,
+    //   mainMenuBar: false,
+    //   statusBar: false
+    // }
+    // jsoneditor = new JSONEditor(jsoneditorRef.value, options)
+    // const initialJson = undefined
+    // jsoneditor.set(initialJson)
 })
 
-function statusChange() {
-  console.log('change')
-}
 
 function change(val) {
   console.log(val)
@@ -181,16 +217,17 @@ function change(val) {
   display: flex;
   height: 25px;
   border-bottom: 1px solid #d7f7f7;
-  .enable-status {
-    display: flex;
-    align-items: center;
-  }
+}
+
+:deep(.el-tabs__nav-wrap.is-left::after) {
+  width: 1px;
 }
 </style>
 <style>
 :root {
   color-scheme: light dark;
 }
+
 body {
   color-scheme: light dark;
   margin: 0;

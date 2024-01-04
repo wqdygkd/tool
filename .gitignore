@@ -12,3 +12,6 @@ build
 *.spec
 package-lock.json
 dist
+
+auto-imports.d.ts
+components.d.ts
