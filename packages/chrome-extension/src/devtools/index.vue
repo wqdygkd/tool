@@ -5,24 +5,65 @@
       <label for="enable-status">启用</label>
     </div>
   </div>
+  <div>
+
+  </div>
   <main>
-    <button @click="importFile">选择文件</button>
-    <select name="card" >
-      <option :value="item.json"  v-for="(item, index) in contentArray" :key="index">{{ item.date }}{{ item.name }}</option>
-    </select>
+    读医保卡
+    <button @click="importFile">选择文件1</button>
+    <el-select  style="width: 200px;"  size="small" @change="change" filterable value-key="id">
+      <el-option
+        v-for="item in contentArray"
+        :key="item.raw"
+        :label="item.date + item.name"
+        :value="item.json"
+      />
+    </el-select>
+    内置数据
+    <el-select  style="width: 200px;"  size="small" @change="change" filterable value-key="id">
+      <el-option
+        v-for="item in contentArray"
+        :key="item.raw"
+        :label="item.date + item.name"
+        :value="item.json"
+      />
+    </el-select>
+    <div  style="width: 800px; height: 400px;" ref="jsoneditorRef"></div>
+
+    读身份证
+    <button @click="importFile">选择文件1</button>
+    <el-select  style="width: 200px;"  size="small" @change="change" filterable value-key="id">
+      <el-option
+        v-for="item in contentArray"
+        :key="item.raw"
+        :label="item.date + item.name"
+        :value="item.json"
+      />
+    </el-select>
+    <div  style="width: 800px; height: 400px;" ref="jsoneditorRef"></div>
+    读永居证
+    <button @click="importFile">选择文件1</button>
+    <el-select  style="width: 200px;"  size="small" @change="change" filterable value-key="id">
+      <el-option
+        v-for="item in contentArray"
+        :key="item.raw"
+        :label="item.date + item.name"
+        :value="item.json"
+      />
+    </el-select>
     <div  style="width: 800px; height: 400px;" ref="jsoneditorRef"></div>
   </main>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, reactive, toRaw } from 'vue'
 import JSONEditor from 'jsoneditor'
 import type { JSONEditorOptions } from 'jsoneditor'
 import 'jsoneditor/dist/jsoneditor.css'
 
 const jsoneditorRef = ref<any>(null)
 let jsoneditor: JSONEditor
-let contentArray: any[]
+let contentArray: any[] = reactive([])
 
 function importFile() {
   let fileInput = document.createElement('input')
@@ -35,7 +76,7 @@ function importFile() {
       const reader = new FileReader();
       reader.onload = (event: ProgressEvent<FileReader>) => {
         const content = event.target?.result as string;
-        contentArray = content.split('-------------------------------------INFO-------------------------------------')
+        contentArray.push(...content.split('-------------------------------------INFO-------------------------------------')
                                   .filter(item => item.includes('读卡接口代理A-2出参'))
                                   .map(item => {
                                     return { raw: item, json: extractJSON(item)}
@@ -51,14 +92,15 @@ function importFile() {
                                       date,
                                       name: personInfomation.name,
                                       idCard,
-                                      mCard
+                                      mCard,
+                                      id: date + idCard
                                     }
-                                  })
+                                  }))
 
         if (contentArray.length === 1) {
-          jsoneditor.set(contentArray[0])
+          jsoneditor.set(toRaw(contentArray[0]))
         }
-        console.log(contentArray)
+        console.log(toRaw(contentArray))
         // this.saveContentToLocal(toolName, file.name, evt.target.result);
       };
       reader.readAsText(file);
@@ -111,6 +153,9 @@ function statusChange() {
   console.log('change')
 }
 
+function change(val) {
+  console.log(val)
+}
 
   // const fileInput = ref(null)
   // onMounted(() => {
