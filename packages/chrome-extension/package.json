@@ -1,6 +1,6 @@
 {
   "name": "chrome-extension",
-  "displayName": "Vue.ts Chrome Extension",
+  "displayName": "Tool Chrome Extension",
   "version": "0.0.0",
   "description": "",
   "type": "module",

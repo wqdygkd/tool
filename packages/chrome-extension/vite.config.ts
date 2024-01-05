@@ -16,24 +16,27 @@ export default defineConfig(({ mode }) => {
       outDir: 'build',
       rollupOptions: {
         output: {
-          chunkFileNames: 'assets/chunk-[hash].js',
-        },
-      },
+          chunkFileNames: 'assets/chunk-[hash].js'
+        }
+      }
     },
-    plugins: [crx({ manifest }), vue(),
+    plugins: [
+      crx({ manifest }),
+      vue(),
       AutoImport({
-      resolvers: [ElementPlusResolver()],
-    }),
-    Components({
-      resolvers: [ElementPlusResolver()],
-    }),],
+        resolvers: [ElementPlusResolver()]
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()]
+      })
+    ],
     server: {
       port: 8887,
       strictPort: true,
       hmr: {
         port: 8886,
-        overlay: false,
-      },
-    },
+        overlay: false
+      }
+    }
   }
 })
