@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
-import App from './NewTab.vue'
 
-createApp(App).mount('#app')
+import Index from './index.vue'
+
+createApp(Index).mount('#app')

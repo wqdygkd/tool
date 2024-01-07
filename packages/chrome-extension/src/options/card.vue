@@ -19,12 +19,27 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, reactive, toRaw , watch} from 'vue'
+import { ref, onMounted, reactive, toRaw , watch, } from 'vue'
 import JSONEditor from 'jsoneditor'
 import type { JSONEditorOptions } from 'jsoneditor'
 import 'jsoneditor/dist/jsoneditor.css'
-
 import {  Upload } from '@element-plus/icons-vue'
+
+import * as defaultCardData from './default'
+const props = defineProps<{
+  type: string
+}>()
+
+const storageKey = props.type
+let cardData = defaultCardData[storageKey  as keyof typeof defaultCardData]
+let storageData = await chrome.storage.local.get([storageKey])
+console.log(1, storageData)
+console.log(1, cardData)
+if (!storageData[storageKey]) {
+
+}
+
+
 
 const status = ref(false)
 watch(status, (newStatus) => {
@@ -32,6 +47,10 @@ watch(status, (newStatus) => {
   // chrome.storage.sync.set({ count: newCount })
   // chrome.runtime.sendMessage({ type: 'COUNT', count: count.value })
 })
+
+
+
+console.log(props.type)
 
 const jsoneditorRef = ref<any>(null)
 let jsoneditor: JSONEditor
@@ -108,7 +127,12 @@ function extractJSON (content: string) {
   return null
 }
 
-onMounted(() => {
+onMounted(async () => {
+
+  // chrome.storage.local.get([storageKey], (result) => {
+  //   status.value = result[storageKey] ?? false
+  // })
+
   const options: JSONEditorOptions  = {
     mode: 'code',
     // modes: ['text', 'code', 'tree'],
