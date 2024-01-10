@@ -8,11 +8,11 @@
         <el-tabs :tab-position="tabPosition">
           <el-tab-pane label="winex">
             <el-tabs>
-              <el-tab-pane label="console">
+              <!-- <el-tab-pane label="console">
                 <Suspense>
                   <Console></Console>
                 </Suspense>
-              </el-tab-pane>
+              </el-tab-pane> -->
               <el-tab-pane label="医保卡">
                 <Suspense>
                   <Card type="medicareCard"></Card>

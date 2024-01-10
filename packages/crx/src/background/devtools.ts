@@ -5,7 +5,3 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
     chrome.runtime.sendMessage({ type: 'winex.console', value: 'update' })
   }
 })
-
-// chrome.tabs.onCreated.addListener(function(tab) {
-//   console.log('onCreated', tab)
-// })

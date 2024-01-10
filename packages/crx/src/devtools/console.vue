@@ -56,7 +56,5 @@ function injectConsole(type: number): void {
         }
       }
     )
-
-
 }
 </script>
