@@ -1,6 +1,6 @@
 console.log('background is running')
 
-// import './devtools'
+import './devtools'
 // import './contextMenus'
 // import './runtime.onInstalled'
 // import './action.onClicked'

@@ -17,8 +17,8 @@ import proxy from './script/proxy/index.js'
 import del from './script/del/index.js'
 import rimraf from './script/rimraf/index.js'
 
-const pkg = import('./package.json')
-
+// const pkg = import('./package.json')
+import pkg from './package.json' assert { type: 'json'}
 const program = new Command()
 program
   .name('tool')

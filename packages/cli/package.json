@@ -2,13 +2,15 @@
   "name": "tool-cli",
   "version": "0.0.0",
   "description": "tool-cli",
-  "main": "tool.js",
+  "main": "dist",
   "type": "module",
   "bin": {
-    "tool": "tool.js"
+    "tool": "dist/index.js"
   },
   "scripts": {
     "clean": "pnpx rimraf node_modules",
+    "dev": "ncc build tool.js -o dist -w -s",
+    "build": "ncc build tool.js -o dist -m",
     "postinstall": "node postinstall.js",
     "p": "npm publish --access public"
   },
@@ -30,5 +32,8 @@
   },
   "volta": {
     "extends": "../../package.json"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.1"
   }
 }
