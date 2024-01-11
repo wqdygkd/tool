@@ -1,5 +1,5 @@
 {
-  "name": "tool-cli",
+  "name": "@wqdy/tool-cli",
   "version": "0.0.0",
   "description": "tool-cli",
   "main": "dist",

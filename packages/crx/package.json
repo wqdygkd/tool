@@ -1,5 +1,5 @@
 {
-  "name": "chrome-extension",
+  "name": "@wqdy/tool-crx",
   "displayName": "Tool Chrome Extension",
   "version": "0.0.0",
   "description": "",
