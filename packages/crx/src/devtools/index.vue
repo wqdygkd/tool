@@ -93,7 +93,7 @@ import Console from './console.vue'
 const status = ref(false)
 watch(status, (newStatus) => {
   console.log(newStatus)
-  // chrome.storage.sync.set({ count: newCount })
+  // chrome.storage.local.set({ count: newCount })
 
   // chrome.runtime.sendMessage({ type: 'COUNT', count: count.value })
 })

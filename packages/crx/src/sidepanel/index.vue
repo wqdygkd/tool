@@ -5,7 +5,7 @@ const countSync = ref(0)
 const link = ref('https://github.com/guocaoyi/create-chrome-ext')
 
 onMounted(() => {
-  chrome.storage.sync.get(['count'], (result) => {
+  chrome.storage.local.get(['count'], (result) => {
     countSync.value = result.count ?? 0
   })
 
