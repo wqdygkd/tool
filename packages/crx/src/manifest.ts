@@ -40,6 +40,12 @@ export default defineManifest({
   // 需要直接注入页面的JS
   // content-scripts和原始页面共享DOM，但是不共享JS，如要访问页面JS（例如某个JS变量），只能通过injected js来实现
   content_scripts: [
+    {
+      matches: ['<all_urls>'], // 所有页面
+      // 多个JS按顺序注入
+      js: ['src/contentScript/index.ts'],
+      run_at: 'document_start'
+    }
     // {
     //   "matches": ["<all_urls>"], // 所有页面
     //   // 多个JS按顺序注入
@@ -62,14 +68,19 @@ export default defineManifest({
   web_accessible_resources: [
     {
       resources: ['img/logo-16.png', 'img/logo-34.png', 'img/logo-48.png', 'img/logo-128.png'],
-      matches: []
+      matches: ['<all_urls>']
+    },
+    {
+      matches: ['<all_urls>'], // 所有页面
+      resources: ['src/injectScript/index.js']
     }
   ],
   permissions: [
     'sidePanel',
     'storage', // 插件本地存储
     'contextMenus', // 右键菜单
-    'tabs' // 标签
+    'tabs', // 标签
+    'scripting' // 向页面注入 css js
     // "notifications", // 通知
     // "webRequest", // web请求
     // "webRequestBlocking",

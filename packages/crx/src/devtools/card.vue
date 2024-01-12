@@ -33,13 +33,11 @@ const props = defineProps<{
 const storageKey = props.type
 let cardData = defaultCardData[storageKey  as keyof typeof defaultCardData]
 let storageData = await chrome.storage.local.get([storageKey])
-console.log(1, storageData)
-console.log(1, cardData)
+// console.log(1, storageData)
+// console.log(1, cardData)
 if (!storageData[storageKey]) {
 
 }
-
-
 
 const status = ref(false)
 watch(status, (newStatus) => {

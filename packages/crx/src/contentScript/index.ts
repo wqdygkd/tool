@@ -1,17 +1,4 @@
 console.info('contentScript is running')
+import injectCustomJs from './injectCustomJs'
 
-// 向页面注入JS
-// function injectCustomJs(jsPath)
-// {
-// 	jsPath = jsPath || 'js/inject.js';  // js/inject.js 需要在 web_accessible_resources 中配置
-// 	var temp = document.createElement('script');
-// 	temp.setAttribute('type', 'text/javascript');
-// 	// 获得的地址类似：chrome-extension://ihcokhadfjfchaeagdoclpnjdiokfakg/js/inject.js
-// 	temp.src = chrome.extension.getURL(jsPath);
-// 	temp.onload = function()
-// 	{
-// 		// 放在页面不好看，执行完后移除掉
-// 		this.parentNode.removeChild(this);
-// 	};
-// 	document.head.appendChild(temp);
-// }
+injectCustomJs('src/injectScript/index.js')

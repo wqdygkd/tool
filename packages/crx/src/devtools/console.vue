@@ -28,6 +28,29 @@ watch(status, (newStatus) => {
   injectConsole(newStatus ? 3 : 4)
 })
 
+function injectHandler() {
+    if (!window.realConsole) {
+      const iframe = document.createElement('iframe');
+      iframe.style.width = '0';
+      iframe.style.height = '0';
+      iframe.style.border = 'none';
+      iframe.style.display = 'block';
+      document.body.append(iframe);
+      window.realConsole = iframe.contentWindow?.console;
+    }
+
+    Object.defineProperty(window.console, 'log', {
+        get() {
+          return window.fakeLog || window.realLog;
+        },
+        set(v) {
+          window.fakeLog = v;
+          console.info(v);
+          console.info(typeof v);
+        }
+      })
+}
+
 async function injectConsole(type: number): Promise<void> {
   // type 1 页面刷新 true 2 页面刷新 false  3 页面已存在
   if (type === 1 || type === 2) {
@@ -69,7 +92,7 @@ async function injectConsole(type: number): Promise<void> {
       `
       Object.defineProperty(window.console, 'log', {
         get() {
-          return window.fakeLog
+          return window.fakeLog || window.realLog;
         },
         set(v) {}
       })
