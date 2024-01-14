@@ -5,8 +5,11 @@ chrome插件版工具
 ## 参考
 
 [chrome官方文档](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world?hl=zh-cn)
+
 [GoogleChrome/chrome-extensions-samples](https://github.com/GoogleChrome/chrome-extensions-samples)
+
 [guocaoyi/create-chrome-ext](https://github.com/guocaoyi/create-chrome-ext)
+
 [xifangczy/cat-catch](https://github.com/xifangczy/cat-catch)
 
 Chrome插件的JS主要可以分为这5类：injected script、content-script、popup js、background js和devtools js
