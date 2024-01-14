@@ -1,6 +1,6 @@
 <template>
   <el-config-provider size="small">
-    <el-container style="height: 100%;">
+    <el-container style="height: 100%">
       <el-header class="bar">
         <el-checkbox v-model="status" label="启用" />
       </el-header>
@@ -28,30 +28,21 @@
 
             <el-descriptions v-if="false" class="margin-top" title="With border" :column="1" border>
               <el-descriptions-item>
-                <template #label>
-                  Username
-                </template>
+                <template #label>Username</template>
                 kooriookami
               </el-descriptions-item>
               <el-descriptions-item>
                 <template #label>
-                  <div class="cell-item">
-
-                    Telephone
-                  </div>
+                  <div class="cell-item">Telephone</div>
                 </template>
                 18100000000
               </el-descriptions-item>
               <el-descriptions-item>
                 <template #label>
-                  <div class="cell-item">
-
-                    Place
-                  </div>
+                  <div class="cell-item">Place</div>
                 </template>
                 Suzhou
               </el-descriptions-item>
-
             </el-descriptions>
           </el-tab-pane>
           <el-tab-pane label="Config">Config</el-tab-pane>
@@ -60,33 +51,30 @@
         </el-tabs>
       </el-container>
     </el-container>
-    <div>
-
-    </div>
+    <div></div>
     <main v-if="false">
-
       内置数据
-      <el-select style="width: 200px;" size="small" filterable value-key="id">
+      <el-select style="width: 200px" size="small" filterable value-key="id">
         <el-option v-for="item in contentArray" :key="item.raw" :label="item.date + item.name" :value="item.json" />
       </el-select>
-      <div style="width: 800px; height: 400px;" ref="jsoneditorRef"></div>
+      <div style="width: 800px; height: 400px" ref="jsoneditorRef"></div>
 
       读身份证
-      <el-select style="width: 200px;" size="small" filterable value-key="id">
+      <el-select style="width: 200px" size="small" filterable value-key="id">
         <el-option v-for="item in contentArray" :key="item.raw" :label="item.date + item.name" :value="item.json" />
       </el-select>
-      <div style="width: 800px; height: 400px;" ref="jsoneditorRef"></div>
+      <div style="width: 800px; height: 400px" ref="jsoneditorRef"></div>
       读永居证
-      <el-select style="width: 200px;" size="small" filterable value-key="id">
+      <el-select style="width: 200px" size="small" filterable value-key="id">
         <el-option v-for="item in contentArray" :key="item.raw" :label="item.date + item.name" :value="item.json" />
       </el-select>
-      <div style="width: 800px; height: 400px;" ref="jsoneditorRef"></div>
+      <div style="width: 800px; height: 400px" ref="jsoneditorRef"></div>
     </main>
   </el-config-provider>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, reactive,  watch} from 'vue'
+import { ref, onMounted, reactive, watch } from 'vue'
 import Card from './card.vue'
 import Console from './console.vue'
 
@@ -104,28 +92,24 @@ const jsoneditorRef = ref<any>(null)
 
 let contentArray: any[] = reactive([])
 
-onMounted(() => {
+onMounted(() => {})
 
-})
-
-  // const fileInput = ref(null)
-  // onMounted(() => {
-  //   console.log(fileInput)
-  // })
-  // fileInput.addEventListener('change', (event) => {
-  //   console.log(666)
-  //   chrome.runtime.sendMessage({ type: 'COUNT', count: 1 })
-  //   const file = event.target.files[0];
-  //   const reader = new FileReader();
-  //   reader.onload = (event) => {
-  //     const content = event.target.result;
-  //     console.log(content);
-  //   };
-  //   reader.readAsText(file);
-  // });
+// const fileInput = ref(null)
+// onMounted(() => {
+//   console.log(fileInput)
+// })
+// fileInput.addEventListener('change', (event) => {
+//   console.log(666)
+//   chrome.runtime.sendMessage({ type: 'COUNT', count: 1 })
+//   const file = event.target.files[0];
+//   const reader = new FileReader();
+//   reader.onload = (event) => {
+//     const content = event.target.result;
+//     console.log(content);
+//   };
+//   reader.readAsText(file);
+// });
 </script>
-
-
 
 <style scoped lang="scss">
 .bar {

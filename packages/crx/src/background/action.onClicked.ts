@@ -1,5 +1,5 @@
 // 插件按钮点击 如果有 pop 此行为将失效
-chrome.action.onClicked.addListener(async tab => {
+chrome.action.onClicked.addListener(async (tab) => {
   // Retrieve the action badge to check if the extension is 'ON' or 'OFF'
   const prevState = await chrome.action.getBadgeText({ tabId: tab.id })
   // Next state will always be the opposite

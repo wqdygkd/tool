@@ -24,9 +24,8 @@ export default defineManifest({
   },
   // 右键插件-选项
   options_page: 'src/options/index.html',
-  // "options_ui":
-  // {
-  // 	"page": "src/options/index.html"
+  // options_ui: {
+  //   page: 'src/options/index.html'
   // },
 
   // 调试控制台
@@ -47,13 +46,13 @@ export default defineManifest({
       run_at: 'document_start'
     }
     // {
-    //   "matches": ["<all_urls>"], // 所有页面
+    //   matches: ['<all_urls>'], // 所有页面
     //   // 多个JS按顺序注入
-    // 	"js": ["js/jquery-1.8.3.js", "js/content-script.js"],
-    // 	// css的注
-    // 	"css": ["css/custom.css"],
-    // 	// 代码注入的时间，可选值： "document_start", "document_end", or "document_idle"，最后一个表示页面空闲时，默认document_idle
-    // 	"run_at": "document_start"
+    //   js: ['js/jquery-1.8.3.js', 'js/content-script.js'],
+    //   // css的注
+    //   css: ['css/custom.css'],
+    //   // 代码注入的时间，可选值： "document_start", "document_end", or "document_idle"，最后一个表示页面空闲时，默认document_idle
+    //   run_at: 'document_start'
     // },
     // {
     //   matches: ['http://*/*', 'https://*/*'],
@@ -81,19 +80,19 @@ export default defineManifest({
     'contextMenus', // 右键菜单
     'tabs', // 标签
     'scripting' // 向页面注入 css js
-    // "notifications", // 通知
-    // "webRequest", // web请求
-    // "webRequestBlocking",
-    // "http://*/*", // 可以通过executeScript或者insertCSS访问的网站
-    // "https://*/*" // 可以通过executeScript或者insertCSS访问的网站
+    // 'notifications', // 通知
+    // 'webRequest', // web请求
+    // 'webRequestBlocking',
+    // 'http://*/*', // 可以通过executeScript或者insertCSS访问的网站
+    // 'https://*/*' // 可以通过executeScript或者insertCSS访问的网站
   ],
 
   // 覆盖特定页面  ，一个插件只能替代一个默认页
   chrome_url_overrides: {
-    newtab: 'src/newtab/index.html' // 覆盖浏览器默认的新标签页
-    // "history": "history.html",
-    // "bookmarks": "bookmarks.html"
+    newtab: 'src/newtab/index.html', // 覆盖浏览器默认的新标签页
+    // history: 'history.html',
+    // bookmarks: 'bookmarks.html'
   },
   // 向地址栏注册一个关键字以提供搜索建议，只能设置一个关键字
-  omnibox: { keyword: 'jjj' }
+  omnibox: { keyword: 'tool' }
 })

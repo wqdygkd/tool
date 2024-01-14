@@ -140,6 +140,49 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
 
+  packages/tampermonkey-script/winex-readcard:
+    dependencies:
+      '@element-plus/icons-vue':
+        specifier: ^2.3.1
+        version: 2.3.1(vue@3.4.9)
+      dayjs:
+        specifier: ^1.11.10
+        version: 1.11.10
+      element-plus:
+        specifier: ^2.4.4
+        version: 2.5.1(vue@3.4.9)
+      sass:
+        specifier: ^1.69.7
+        version: 1.69.7
+      vue:
+        specifier: ^3.4.3
+        version: 3.4.9(typescript@5.3.3)
+    devDependencies:
+      '@types/tampermonkey':
+        specifier: ^5.0.2
+        version: 5.0.2
+      '@vitejs/plugin-vue':
+        specifier: ^4.6.2
+        version: 4.6.2(vite@5.0.11)(vue@3.4.9)
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
+      unplugin-auto-import:
+        specifier: ^0.17.3
+        version: 0.17.3(rollup@2.78.1)
+      unplugin-vue-components:
+        specifier: ^0.25.2
+        version: 0.25.2(rollup@2.78.1)(vue@3.4.9)
+      vite:
+        specifier: ^5.0.10
+        version: 5.0.11(@types/node@20.11.0)(sass@1.69.7)
+      vite-plugin-css-injected-by-js:
+        specifier: ^3.3.1
+        version: 3.3.1(vite@5.0.11)
+      vue-tsc:
+        specifier: ^1.8.27
+        version: 1.8.27(typescript@5.3.3)
+
   packages/web:
     dependencies:
       '@element-plus/icons-vue':
@@ -187,7 +230,7 @@ importers:
         version: 0.25.2(rollup@2.78.1)(vue@3.4.9)
       vite:
         specifier: ^5.0.10
-        version: 5.0.11(@types/node@20.11.0)
+        version: 5.0.11(@types/node@20.11.0)(sass@1.69.7)
       vue-tsc:
         specifier: ^1.8.27
         version: 1.8.27(typescript@5.3.3)
@@ -2256,6 +2299,10 @@ packages:
       '@types/node': 20.11.0
     dev: false
 
+  /@types/tampermonkey@5.0.2:
+    resolution: {integrity: sha512-keKnYemqWts68wO2+TBdEg84iQd5vymK5SEQGxitI9uOfOnjm/ZskBoK9ZH3mnSYp79HidZMA/Y7ODQtiA/VIg==}
+    dev: true
+
   /@types/trusted-types@2.0.7:
     resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
     dev: false
@@ -2291,7 +2338,7 @@ packages:
       '@babel/core': 7.23.7
       '@babel/plugin-transform-typescript': 7.23.6(@babel/core@7.23.7)
       '@vue/babel-plugin-jsx': 1.1.5(@babel/core@7.23.7)
-      vite: 5.0.11(@types/node@20.11.0)
+      vite: 5.0.11(@types/node@20.11.0)(sass@1.69.7)
       vue: 3.4.9(typescript@5.3.3)
     transitivePeerDependencies:
       - supports-color
@@ -2315,7 +2362,7 @@ packages:
       vite: ^4.0.0 || ^5.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 5.0.11(@types/node@20.11.0)
+      vite: 5.0.11(@types/node@20.11.0)(sass@1.69.7)
       vue: 3.4.9(typescript@5.3.3)
     dev: true
 
@@ -6596,6 +6643,14 @@ packages:
       '@sphinxxxx/color-conversion': 2.2.2
     dev: false
 
+  /vite-plugin-css-injected-by-js@3.3.1(vite@5.0.11):
+    resolution: {integrity: sha512-PjM/X45DR3/V1K1fTRs8HtZHEQ55kIfdrn+dzaqNBFrOYO073SeSNCxp4j7gSYhV9NffVHaEnOL4myoko0ePAg==}
+    peerDependencies:
+      vite: '>2.0.0-0'
+    dependencies:
+      vite: 5.0.11(@types/node@20.11.0)(sass@1.69.7)
+    dev: true
+
   /vite-plugin-pwa@0.17.4(vite@5.0.11)(workbox-build@7.0.0)(workbox-window@7.0.0):
     resolution: {integrity: sha512-j9iiyinFOYyof4Zk3Q+DtmYyDVBDAi6PuMGNGq6uGI0pw7E+LNm9e+nQ2ep9obMP/kjdWwzilqUrlfVRj9OobA==}
     engines: {node: '>=16.0.0'}
@@ -6607,7 +6662,7 @@ packages:
       debug: 4.3.4(supports-color@5.5.0)
       fast-glob: 3.3.2
       pretty-bytes: 6.1.1
-      vite: 5.0.11(@types/node@20.11.0)
+      vite: 5.0.11(@types/node@20.11.0)(sass@1.69.7)
       workbox-build: 7.0.0
       workbox-window: 7.0.0
     transitivePeerDependencies:
@@ -6651,7 +6706,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vite@5.0.11(@types/node@20.11.0):
+  /vite@5.0.11(@types/node@20.11.0)(sass@1.69.7):
     resolution: {integrity: sha512-XBMnDjZcNAw/G1gEiskiM1v6yzM4GE5aMGvhWTlHAYYhxb7S3/V1s3m2LDHa8Vh6yIWYYB0iJwsEaS523c4oYA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -6683,6 +6738,7 @@ packages:
       esbuild: 0.19.11
       postcss: 8.4.33
       rollup: 4.9.4
+      sass: 1.69.7
     optionalDependencies:
       fsevents: 2.3.3
 

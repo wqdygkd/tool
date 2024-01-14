@@ -6,7 +6,7 @@ export default function (jsPath: string): void {
   temp.src = chrome.runtime.getURL(jsPath) // 获得的地址类似：chrome-extension://ihcokhadfjfchaeagdoclpnjdiokfakg/js/inject.js
   temp.onload = function () {
     // 放在页面不好看，执行完后移除掉
-    // this.parentNode.removeChild(this);
+    // (this as any).parentNode.removeChild(this);
   }
   document.head.appendChild(temp)
 }

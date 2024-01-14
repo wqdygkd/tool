@@ -16,6 +16,7 @@ module.exports = {
         GM_getValue: 'readonly',
         GM_setValue: 'readonly',
         GM_cookie: 'readonly',
+        GM_addElement: 'readonly',
         GM_registerMenuCommand: 'readonly',
         cookieStore: 'readonly'
       }

@@ -1,4 +1,5 @@
 https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world?hl=zh-cn
+https://github.com/GoogleChrome/chrome-extensions-samples/tree/main
 
 https://www.cnblogs.com/liuxianan/p/chrome-plugin-develop.html
 
@@ -19,6 +20,17 @@ Chrome插件的JS主要可以分为这5类：injected script、content-script、
 | --------------- | ------------------------------------ | -------------------------------------------- | ------------------------------------------------- | -------------------------------------------------- |
 | injected-script | -                                    | window.postMessage                           | -                                                 | -                                                  |
 | content-script  | window.postMessage                   | -                                            | chrome.runtime.sendMessage chrome.runtime.connect | chrome.runtime.sendMessage  chrome.runtime.connect |
-| popup-js        | -                                    | chrome.tabs.sendMessage  chrome.tabs.connect | -                                                 | chrome.extension. getBackgroundPage()              |
+| popup-js        | -                                    | chrome.tabs.sendMessage  chrome.tabs.connect | -                                                 | chrome.extension.getBackgroundPage()              |
 | background-js   | -                                    | chrome.tabs.sendMessage chrome.tabs.connect  | chrome.extension.getViews                         | -                                                  |
 | devtools-js     | chrome.devtools.inspectedWindow.eval | -                                            | chrome.runtime.sendMessage                        | chrome.runtime.sendMessage                         |
+
+injected-script <=> content.js <=> background.js <=> [options.js, popup.js]
+
+sendMessage(from, to, data) {
+  from => background  content injected popup options
+  to => background  content injected popup options
+}
+
+onMessage(from, to, data) {
+
+}
