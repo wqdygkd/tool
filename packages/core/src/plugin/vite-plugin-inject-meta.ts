@@ -1,4 +1,4 @@
-export default function meta(meta) {
+export function meta(meta) {
   return {
     name: 'inject-meta',
     apply: 'build', // 仅在构建模式下启用

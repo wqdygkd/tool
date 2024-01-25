@@ -2,7 +2,10 @@
   "name": "@wqdy/tool-core",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "main": "index.ts",
+  "exports": {
+    ".": "./index.ts"
+  },
   "scripts": {
     "clean": "pnpx rimraf node_modules"
   },

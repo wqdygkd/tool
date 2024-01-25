@@ -12,10 +12,11 @@ const app = createApp(App)
 app.use(ElementPlus)
 app.use(createPinia())
 app.use(router)
-const log = console.log
-console.log = (...arg) => {
-  log(...arg)
-}
+// const log = console.log
+// console.log = (...arg) => {
+//   log(...arg)
+// }
+
 
 app.mount('#app')
 

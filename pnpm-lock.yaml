@@ -142,11 +142,30 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
 
+  packages/tampermonkey-script/cors:
+    dependencies:
+      ajax-hook:
+        specifier: ^3.0.3
+        version: 3.0.3
+    devDependencies:
+      '@types/tampermonkey':
+        specifier: ^5.0.2
+        version: 5.0.2
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
+      vite:
+        specifier: ^5.0.11
+        version: 5.0.11(@types/node@20.11.0)(sass@1.69.7)
+
   packages/tampermonkey-script/winex-readcard:
     dependencies:
       '@element-plus/icons-vue':
         specifier: ^2.3.1
         version: 2.3.1(vue@3.4.13)
+      '@wqdy/tool-core':
+        specifier: workspace:*
+        version: link:../../core
       dayjs:
         specifier: ^1.11.10
         version: 1.11.10
@@ -2412,6 +2431,10 @@ packages:
     dependencies:
       clean-stack: 4.2.0
       indent-string: 5.0.0
+    dev: false
+
+  /ajax-hook@3.0.3:
+    resolution: {integrity: sha512-pcVLNEG1f97++3UQQTIGFxYkBNjUDQS4gIOMIFYSUaTe4HklxjqJinR0WjeJaUD5RTBXvRivrssWO//Io/eaxA==}
     dev: false
 
   /ajv@6.12.6:
