@@ -26,8 +26,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "ts-node": {
-    "esm": true
-  },
   "include": ["index.ts"]
 }
