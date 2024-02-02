@@ -7,7 +7,7 @@
   "scripts": {
     "web": "yarn workspace tool-web run dev",
     "clean": "pnpx rimraf node_modules",
-    "clean:all": "pnpx rimraf node_modules && pnpm run -r --parallel clean",
+    "clean:all": "pnpm clean && pnpm -r --parallel clean",
     "up": "pnpm update -i -r --latest"
   },
   "author": "c",
