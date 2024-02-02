@@ -22,3 +22,4 @@ components.d.ts
 !.vscode/extensions.json
 .idea
 .DS_Store
+*.timestamp-*
