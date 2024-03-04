@@ -4,7 +4,7 @@ const NOOP = () => {}
 const href = window.location.href
 const rules = {
   '://blog.csdn.net/*': {
-    addStyle: `* { -webkit-user-select:text !important; -moz-user-select:text !important; } ::selection { color: #fff; background: #3390FF; } .article-search-tip { display: none !important; } `,
+    addStyle: `* { -webkit-user-select: text !important; -moz-user-select: text !important; } ::selection { color: #fff; background: #3390FF; } .article-search-tip { display: none !important; }`,
     hookEventNames: ['copy']
   }
 }
