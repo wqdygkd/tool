@@ -18,11 +18,15 @@ module.exports = {
         GM_cookie: 'readonly',
         GM_addElement: 'readonly',
         GM_registerMenuCommand: 'readonly',
-        cookieStore: 'readonly'
+        cookieStore: 'readonly',
+        $: 'readonly'
       }
     },
     {
       files: ['packages/web/**'],
+      env: {
+        browser: true
+      },
       extends: ['@wqdy/eslint-config-vue2']
     }
   ]

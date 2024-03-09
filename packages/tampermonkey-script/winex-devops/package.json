@@ -1,5 +1,5 @@
 {
-  "name": "@wqdy/tool-remove-web-limits",
+  "name": "@wqdy/tool-winex-devops",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,11 +10,15 @@
     "clean": "pnpx rimraf node_modules"
   },
   "dependencies": {
-    "@wqdy/tool-core": "workspace:*"
+    "@wqdy/tool-core": "workspace:*",
+    "terser": "^5.28.1"
   },
   "devDependencies": {
+    "@types/jquery": "^3.5.29",
     "@types/node": "^20.11.25",
     "@types/tampermonkey": "^5.0.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.2",
     "vite": "^5.1.4"
   },
   "volta": {
