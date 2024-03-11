@@ -23,3 +23,4 @@ components.d.ts
 .idea
 .DS_Store
 *.timestamp-*
+winex/out
