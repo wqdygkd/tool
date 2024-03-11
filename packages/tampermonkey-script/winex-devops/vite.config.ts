@@ -6,8 +6,11 @@ import { meta as injectMeta } from '@wqdy/tool-core'
 import getMetaString from './src/meta/'
 import prodMeta from './src/meta/prod.meta'
 
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(() => {
   return {
+    define: {
+      'process.env.NODE_ENV': `"${process.env.NODE_ENV}"`
+    },
     plugins: [injectMeta(getMetaString(prodMeta))],
     hmr: {
       protocol: 'ws',

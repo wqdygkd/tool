@@ -1,5 +1,6 @@
 // @ts-ignore
-export function meta(meta: string) {
+import type { Plugin } from 'vite'
+export function meta(meta: string): Plugin {
   return {
     name: 'inject-meta',
     apply: 'build', // 仅在构建模式下启用
@@ -11,9 +12,9 @@ export function meta(meta: string) {
         Object.entries(bundle).find(([name]) => {
           return name.includes(keyword)
         }) ?? []
-        // @ts-ignore
+      // @ts-ignore
       if (!target || target.type !== 'chunk') return
-        // @ts-ignore
+      // @ts-ignore
       target.code = `${meta}\n${target.code}`
     }
   }
