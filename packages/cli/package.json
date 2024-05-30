@@ -1,0 +1,40 @@
+{
+  "name": "@wqdy/tool-cli",
+  "version": "0.0.0",
+  "description": "tool-cli",
+  "main": "dist",
+  "type": "module",
+  "bin": {
+    "tool": "dist/index.js"
+  },
+  "scripts": {
+    "clean": "pnpx rimraf node_modules",
+    "dev": "ncc build tool.js -o dist -w -s",
+    "build": "ncc build tool.js -o dist -m",
+    "postinstall": "node postinstall.js",
+    "p": "npm publish --access public"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^11.1.0",
+    "del": "^7.1.0",
+    "extract-zip": "^2.0.1",
+    "figlet": "^1.7.0",
+    "form-data": "^4.0.0",
+    "glob": "^10.3.10",
+    "got": "^14.2.1",
+    "inquirer": "^9.2.15",
+    "node-fetch": "^3.3.2",
+    "ora": "^8.0.1",
+    "progress": "^2.0.3",
+    "rimraf": "^5.0.5",
+    "shelljs": "^0.8.5",
+    "split2": "^4.2.0"
+  },
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.1"
+  }
+}

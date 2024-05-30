@@ -1,0 +1,19 @@
+{
+  "name": "winex-get-package-version",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "assert": "^2.1.0",
+    "axios": "^1.6.7",
+    "azure-devops-node-api": "^9.0.1",
+    "got": "^14.2.0",
+    "npm-package-arg": "^11.0.1"
+  }
+}

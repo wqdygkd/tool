@@ -1,0 +1,23 @@
+{
+  "name": "@wqdy/tool-winex-readcard",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:watch": "vite build --watch",
+    "clean": "pnpx rimraf node_modules"
+  },
+  "dependencies": {
+    "ajax-hook": "^3.0.3"
+  },
+  "devDependencies": {
+    "@types/tampermonkey": "^5.0.2",
+    "typescript": "^5.4.2",
+    "vite": "^5.1.4"
+  },
+  "volta": {
+    "extends": "../../../package.json"
+  }
+}

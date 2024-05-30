@@ -1,0 +1,28 @@
+{
+  "name": "tool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "web": "yarn workspace tool-web run dev",
+    "clean": "pnpx rimraf node_modules",
+    "clean:all": "pnpm clean && pnpm -r --parallel clean",
+    "up": "pnpm update -i -r --latest"
+  },
+  "author": "c",
+  "homepage": "https://github.com/wqdygkd/tool#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wqdygkd/tool.git"
+  },
+  "license": "ISC",
+  "volta": {
+    "node": "20.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.25",
+    "@wqdy/eslint-config": "^0.0.2",
+    "@wqdy/eslint-config-vue2": "^0.0.2"
+  }
+}
