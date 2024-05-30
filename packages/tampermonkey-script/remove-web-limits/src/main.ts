@@ -29,6 +29,14 @@ function init() {
       }
 
       EventTarget.prototype.addEventListener = hockAddEventListener
+
+      // if(rule.hook_preventDefault) {
+      //   Event.prototype.preventDefault = function() {
+      //       if(hook_eventNames.indexOf(this.type) < 0) {
+      //           Event_preventDefault.apply(this, arguments);
+      //       }
+      //   }
+      // }
     }
   })
 }
