@@ -1,54 +1,66 @@
-import got from 'got'
-import Sqlite3 from 'sqlite3'
+import { MongoClient } from 'mongodb'
+import fetch from 'node-fetch'
 
-const sqlite3 = Sqlite3.verbose()
-const db = new sqlite3.Database('./note.db')
+const uri = 'mongodb://127.0.0.1:27017/main'
+const client = async () => {
+  return await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+}
 
 const request = async () => {
-  const instance = got.extend({
+  const result = await fetch('https://api.shadiao.pro/du', {
     headers: {
-      origin: 'https://zxso.net',
-      referer: 'https://zxso.net/tool/dognote',
-      'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'
+      accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+      'accept-language': 'zh-CN,zh;q=0.9',
+      'cache-control': 'max-age=0',
+      'sec-ch-ua': '"Chromium";v="104", " Not A;Brand";v="99", "Google Chrome";v="104"',
+      'sec-ch-ua-mobile': '?0',
+      'sec-ch-ua-platform': '"Windows"',
+      'sec-fetch-dest': 'empty',
+      'sec-fetch-mode': 'cors',
+      'sec-fetch-site': 'same-origin',
+      'upgrade-insecure-requests': '1'
     },
-    responseType: 'json'
+    referrer: 'https://api.shadiao.pro/du',
+    referrerPolicy: 'strict-origin-when-cross-origin',
+    method: 'GET',
+    mode: 'cors',
+    credentials: 'omit'
   })
 
-  const result = await instance.get('https://zxso.net/api/dognote')
-  return result.body.data.trim()
+  const data = await result.json()
+  return data.data.text.trim()
 }
 
 let count = 1
 
-const main = async () => {
-  let note = await request()
-  note = note.replace(/["'‘’“”]/g, ' ')
-  const str = `SELECT * FROM "main"."note" WHERE "note" = "${note}"`
-  db.get(str, async (err, row) => {
-    if (err) {
-      console.log(err)
-    }
-    if (row) {
-      // console.log(row)
-      console.log(`第${count}次 已存在`)
-    } else {
-      db.run(`INSERT INTO "main"."note" ("note") VALUES ("${note}")`)
-      console.log(`第${count}次 添加成功`)
-    }
+const main = async jitang => {
+  const note = await request()
+  // const note = '哈哈哈'
+  console.log(note)
+  return
+  const res = await jitang.find({ note }).toArray()
+  if (res.length === 0) {
+    await jitang.insertOne({ note: note })
+    console.log(`第${count}次 添加成功`)
+  } else {
+    console.log(`第${count}次 已存在`)
+  }
 
-    count++
-    const wait = (Math.random() * 4 + 1)
-    // console.log(`暂停${wait}秒`)
-    await new Promise(resolve => {
-      setTimeout(() => {
-        resolve()
-      }, wait * 1000)
-    })
-
-    await main()
+  count++
+  const wait = (Math.random() * 4 + 1)
+  // console.log(`暂停${wait}秒`)
+  await new Promise(resolve => {
+    setTimeout(() => {
+      resolve()
+    }, wait * 1000)
   })
+
+  // await main(jitang)
 }
 
-db.serialize(async () => await main())
-
-// db.close()
+(async () => {
+  const Client = await client()
+  await Client.connect()
+  const jitang = Client.db().collection('jitang')
+  await main(jitang)
+})()
