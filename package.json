@@ -17,9 +17,6 @@
     "url": "git+https://github.com/wqdygkd/tool.git"
   },
   "license": "ISC",
-  "volta": {
-    "node": "20.11.0"
-  },
   "devDependencies": {
     "@types/node": "^20.11.25",
     "@wqdy/eslint-config": "^0.0.2",
