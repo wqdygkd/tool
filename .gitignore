@@ -13,7 +13,8 @@ node_modules
 build
 *.spec
 package-lock.json
-dist
+/**/dist/*
+!index.user.js
 
 auto-imports.d.ts
 components.d.ts
