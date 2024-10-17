@@ -19,13 +19,13 @@
     "commander": "^11.1.0",
     "del": "^7.1.0",
     "extract-zip": "^2.0.1",
-    "figlet": "^1.7.0",
-    "form-data": "^4.0.0",
+    "figlet": "^1.8.0",
+    "form-data": "^4.0.1",
     "glob": "^10.3.10",
-    "got": "^14.2.1",
+    "got": "^14.4.3",
     "inquirer": "^9.2.15",
     "node-fetch": "^3.3.2",
-    "ora": "^8.0.1",
+    "ora": "^8.1.0",
     "progress": "^2.0.3",
     "rimraf": "^5.0.5",
     "shelljs": "^0.8.5",
@@ -35,6 +35,6 @@
     "extends": "../../package.json"
   },
   "devDependencies": {
-    "@vercel/ncc": "^0.38.1"
+    "@vercel/ncc": "^0.38.2"
   }
 }

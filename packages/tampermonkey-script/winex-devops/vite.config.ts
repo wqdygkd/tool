@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'node:path'
 
-import { meta as injectMeta } from '@wqdy/tool-core'
+// import { meta as injectMeta } from '@wqdy/tool-core'
 
 import getMetaString from './src/meta/'
 import prodMeta from './src/meta/prod.meta'
@@ -11,7 +11,7 @@ export default defineConfig(() => {
     define: {
       'process.env.NODE_ENV': `"${process.env.NODE_ENV}"`
     },
-    plugins: [injectMeta(getMetaString(prodMeta))],
+    // plugins: [injectMeta(getMetaString(prodMeta))],
     hmr: {
       protocol: 'ws',
       host: 'localhost'

@@ -42,11 +42,51 @@ if (location.pathname === '/cluster/action/index/welcome') {
   }, 1000)
 }
 
-if (location.pathname === '/cluster/app/win/webclient') {
+if (location.pathname === '/cluster/app/win/webclient' || location.pathname === '/cluster/cluster/portal/webclient') {
   setInterval(() => {
+    console.log(111)
     try {
-      unsafeWindow.pageUI.getViewPart('main').getComponent('toolbar').getButton('toolbar_toolbaritem_web').setActive(true)
-      unsafeWindow.pageUI.getViewPart('main').getComponent('toolbar').getButton('toolbar_toolbaritem_patch').setActive(true)
+      let toolbar = unsafeWindow.pageUI.getViewPart('main').getComponent('toolbar')
+      let contextemenu_tree = unsafeWindow.pageUI.getViewPart('main').getMenu('contextemenu_tree')
+      // 分组维护
+      toolbar.getButton('tree_toolbar_toolbaritem')?.setActive(true)
+      contextemenu_tree.getMenu('contextemenu_t_menuitem_maintain')?.setActive(true)
+      contextemenu_tree.getMenu('contextemenu_tree_menuitem_new')?.show()
+      contextemenu_tree.getMenu('contextemenu_tree_menuitem_new')?.setActive(true)
+      contextemenu_tree.getMenu('contextemenu_tree_menuitem_edit')?.show()
+      contextemenu_tree.getMenu('contextemenu_tree_menuitem_edit')?.setActive(true)
+      contextemenu_tree.getMenu('contextemenu_tree_menuitem_copy')?.setActive(true)
+      contextemenu_tree.getMenu('contextemenu_tree_menuitem_delete')?.show()
+      contextemenu_tree.getMenu('contextemenu_tree_menuitem_delete')?.setActive(true)
+      contextemenu_tree.getMenu('tree_toolbar_toolbaritem_webclientgroup_subscribe')?.setActive(true)
+
+      // 批量操作
+      toolbar.getButton('toolbar_toolbaritem_batch')?.show()
+
+      // 节点管理
+      toolbar.getButton('toolbar_toolbaritem_nodectrl')?.setActive(true)
+      let ctrl = unsafeWindow.pageUI.getViewPart('main').getMenu('ctrl')
+      ctrl.getMenu('toolbar_toolbaritem_new')?.setActive(true)
+      ctrl.getMenu('toolbar_toolbaritem_edit')?.setActive(true)
+      ctrl.getMenu('toolbar_toolbaritem_delete')?.setActive(true)
+      ctrl.getMenu('toolbar_toolbaritem_env_add')?.setActive(true)
+      ctrl.getMenu('toolbar_toolbaritem_newmany')?.show()
+      ctrl.getMenu('toolbar_toolbaritem_newmany')?.setActive(true)
+
+      // 配置管理
+      toolbar.getButton('toolbar_toolbaritem_configcenterctrl')?.setActive(true)
+
+      // 命令窗口
+      toolbar.getButton('toolbar_toolbaritem_web')?.setActive(true)
+
+      // 部署服务
+      toolbar.getButton('tree_toolbar_toolbaritem_batch')?.setActive(true)
+
+      // 补丁管理
+      toolbar.getButton('toolbar_toolbaritem_patch')?.setActive(true)
+
+      // NGINX操作
+      toolbar.getButton('toolbar_toolbaritem_runnginx')?.setActive(true)
     } catch {}
   }, 1000)
 }
