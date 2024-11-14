@@ -1,2 +1,2 @@
-import './GM_hock.ts'
+import './GM_hook.ts'
 import './inject.ts'
