@@ -9,7 +9,8 @@
     "types"
   ],
   "scripts": {
-    "clean": "pnpx rimraf node_modules"
+    "clean": "pnpx rimraf node_modules",
+    "turbobuild": "npm run clean"
   },
   "volta": {
     "extends": "../../package.json"

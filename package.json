@@ -17,9 +17,11 @@
     "url": "git+https://github.com/wqdygkd/tool.git"
   },
   "license": "ISC",
+  "packageManager": "pnpm@10.6.3",
   "devDependencies": {
     "@types/node": "^20.17.6",
     "@wqdy/eslint-config": "^0.0.2",
-    "@wqdy/eslint-config-vue2": "^0.0.2"
+    "@wqdy/eslint-config-vue2": "^0.0.2",
+    "turbo": "^2.4.4"
   }
 }
