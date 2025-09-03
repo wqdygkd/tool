@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "axios": "^1.11.0",
+    "dayjs": "^1.11.13",
     "decimal.js": "^10.3.1",
     "got": "^14.4.3",
     "winston": "^3.15.0"
