@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>vercel反向代理</title>
+  <title>通用代理服务</title>
   <style>
     html,
     body {
@@ -89,15 +89,21 @@
       margin-top: 20px;
       line-height: 1.5;
     }
+    footer {
+        margin-top: 2rem;
+        font-size: 0.8rem;
+        color: #777;
+      }
   </style>
 </head>
 
 <body>
-  <h1>Vercel 反向代理工具</h1>
+  <h1>反向代理工具</h1>
   <div class="container">
     <input type="text" id="input" placeholder="请输入URL，例如: https://example.com" name="domainname">
     <a id="submitBtn" title="反向代理">反向代理</a>
     <p class="description">输入您想要代理的网址，我们将帮助您绕过跨域限制</p>
+    <p class="description">Powered by Vercel Edge Function</p>
   </div>
 </body>
 <script>
@@ -119,7 +125,7 @@
 
   // 定义一组与背景对比明显的文字颜色
   const textColors = [
-    '#ffffff', '#ffffff', '#ffffff', '#ffffff', 
+    '#ffffff', '#ffffff', '#ffffff', '#ffffff',
     '#333333', '#333333', '#333333', '#ffffff',
     '#333333', '#ffffff', '#333333', '#333333'
   ];
@@ -129,7 +135,7 @@
     const randomIndex = Math.floor(Math.random() * gradients.length);
     document.body.style.background = gradients[randomIndex];
     document.querySelector('h1').style.color = textColors[randomIndex];
-    
+
     // 设置按钮颜色与背景一致
     const button = document.getElementById('submitBtn');
     button.style.background = gradients[randomIndex];
@@ -155,18 +161,18 @@
   // 重定向函数
   function handleRedirect() {
     const inputVal = input.value.trim();
-    
+
     // 验证URL
     if (!inputVal || !urlPattern.test(inputVal)) {
       alert('你得输入有效的 URL鸭！');
       return;
     }
-    
+
     // 构造跳转URL
     const BaseUrl = location.origin;
     const [protocol, hostname] = inputVal.split(':/');
     const jumpUrl = `${BaseUrl}/${protocol}${hostname}`;
-    
+
     // 新窗口打开
     window.open(jumpUrl, '_blank');
   }

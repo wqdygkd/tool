@@ -1,0 +1,17 @@
+{
+  "name": "vercel-proxy",
+  "version": "1.0.0",
+  "description": "vercel 代理",
+  "main": "index.js",
+  "scripts": {
+    "env": "vercel env pull",
+    "local": "vercel dev --debug",
+    "prod": "vercel --prod",
+    "clean": "pnpx rimraf node_modules"
+  },
+  "author": "c",
+  "license": "ISC",
+  "devDependencies": {
+    "vercel": "^48.8.2"
+  }
+}
